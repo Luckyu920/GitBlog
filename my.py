@@ -350,6 +350,6 @@ if __name__ == "__main__":
         "--issue_number", help="issue_number", default=None, required=False
     )
     options = parser.parse_args()
-    with open(os.path.join(dir_name, "one.md"), "w") as f:
+    with open(os.path.join(WORK_DIR, "one.md"), "w") as f:
         f.write('hello')
     # main(options.github_token, options.repo_name, options.issue_number)
