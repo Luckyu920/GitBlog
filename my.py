@@ -295,7 +295,14 @@ def main(token, repo_name, issue_number=None, dir_name=WORK_DIR):
     user = login(token)
     me = get_me(user)
     repo = get_repo(user, repo_name)
-    write_file('first_try','hello world')
+    # write_file('first_try','hello world')
+    md_name = os.path.join(
+        dir_name, "abc123.md"
+    )
+    with open(md_name, "w") as f:
+        f.write("# hello\n\n")
+        f.write("## world\n\n")
+    
     
 
 
