@@ -295,13 +295,7 @@ def main(token, repo_name, issue_number=None, dir_name=WORK_DIR):
     user = login(token)
     me = get_me(user)
     repo = get_repo(user, repo_name)
-    # write_file('first_try','hello world')
-    md_name = os.path.join(
-        dir_name, "abc123.md"
-    )
-    with open(md_name, "w") as f:
-        f.write("# hello\n\n")
-        f.write("## world\n\n")
+    write_file('first_try','hello world')
     
     
 
@@ -350,6 +344,4 @@ if __name__ == "__main__":
         "--issue_number", help="issue_number", default=None, required=False
     )
     options = parser.parse_args()
-    with open(os.path.join(WORK_DIR, "one.md"), "w") as f:
-        f.write('hello')
-    # main(options.github_token, options.repo_name, options.issue_number)
+    main(options.github_token, options.repo_name, options.issue_number)
