@@ -2,6 +2,11 @@ name: Generate my things
 
 on:
   workflow_dispatch:
+    inputs:
+      msg:
+        description: 'message'
+        required:  false
+  # ${{ github.event.inputs.logLevel }}
   # issues:
   #   types: [opened, edited]
   # issue_comment:
@@ -37,7 +42,8 @@ jobs:
       - name: Generate new md
         run: |
           source venv/bin/activate
-          python my.py ${{ secrets.G_T }} ${{ github.repository }} --issue_number '${{ github.event.issue.number }}'
+          # python my.py ${{ secrets.G_T }} ${{ github.repository }} --issue_number '${{ github.event.issue.number }}'
+          python my.py ${{ github.event.inputs.msg }}
       
       - name: Push README
         run: |
