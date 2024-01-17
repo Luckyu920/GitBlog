@@ -38,3 +38,11 @@ jobs:
         run: |
           source venv/bin/activate
           python my.py ${{ secrets.G_T }} ${{ github.repository }} --issue_number '${{ github.event.issue.number }}'
+      
+      - name: Push README
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add test/*.md
+          git commit -a -m 'update new blog' || echo "nothing to commit"
+          git push || echo "nothing to push"
