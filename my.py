@@ -2,6 +2,7 @@
 import argparse
 import os
 import re
+import time
 
 import markdown
 from feedgen.feed import FeedGenerator
@@ -278,8 +279,10 @@ def generate_rss_feed(repo, filename, me):
     generator.atom_file(filename)
 '''
 def write_file(file_name,file_content, dir_name=WORK_DIR):
+    # print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+    
     md_name = os.path.join(
-        dir_name, f"{file_name}.md"
+        dir_name, time.strftime("%Y%m%d%H%M%S", time.localtime()) + f"_{file_name}.md"
     )
     with open(md_name, "w") as f:
         f.write(f"# {file_name}\n\n")
