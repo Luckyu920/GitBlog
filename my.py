@@ -3,6 +3,7 @@ import argparse
 import os
 import re
 import time
+from datetime import datetime, timedelta, timezone
 
 import markdown
 from feedgen.feed import FeedGenerator
@@ -280,9 +281,11 @@ def generate_rss_feed(repo, filename, me):
 '''
 def write_file(file_name,file_content, dir_name=WORK_DIR):
     # print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-    
+    # time.strftime("%Y%m%d%H%M%S", time.localtime())
+    utc_dt = datetime.utcnow().replace(tzinfo=timezone.utc)  # 构建了 UTC 的当前时间
+    bj_dt = utc_dt.astimezone(timezone(timedelta(hours=8)))  # 将时区转化为东八区的时间
     md_name = os.path.join(
-        dir_name, time.strftime("%Y%m%d%H%M%S", time.localtime()) + f"_{file_name}.md"
+        dir_name,bj_dt.strftime('%Y%m%d%H%M%S%f') + f"_{file_name}.md"
     )
     with open(md_name, "w") as f:
         f.write(f"# {file_name}\n\n")
