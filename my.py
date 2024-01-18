@@ -345,6 +345,9 @@ if __name__ == "__main__":
         os.mkdir(WORK_DIR)
     parser = argparse.ArgumentParser()
     parser.add_argument("msg", help="message")
+    parser.add_argument(
+        "--title", help="title", default=None, required=False
+    )
     # parser.add_argument("github_token", help="github_token")
     # parser.add_argument("repo_name", help="repo_name")
     # parser.add_argument(
@@ -352,4 +355,4 @@ if __name__ == "__main__":
     # )
     options = parser.parse_args()
     # main(options.github_token, options.repo_name, options.issue_number)
-    write_file('first_try',options.msg)
+    write_file(options.title,options.msg)
