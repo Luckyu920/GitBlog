@@ -288,10 +288,10 @@ def write_file(file_name,file_content, dir_name=WORK_DIR):
         # dir_name,bj_dt.strftime('%Y%m%d%H%M%S%f') + f"_{file_name}.md"
         dir_name,"charge_log.md"
     )
-    time_str=bj_dt.strftime('%Y-%m-%d %H:%M:%S.%f')
-    with open(md_name, "a+") as f:
-        f.write(f"# {file_name}\n\n")
-        f.write(f"## {time_str}，当前电量：{file_content}\n\n")
+    time_str=bj_dt.strftime('%Y-%m-%d %H:%M:%S')
+    with open(md_name, "w+") as f:
+        f.write(f"# 充电记录\n\n")
+        f.write(f"## {time_str}，{file_name}，当前电量：{file_content}\n\n")
         # f.write(f"# [{issue.title}]({issue.html_url})\n\n")
         # f.write(issue.body or "")
         # if issue.comments:
