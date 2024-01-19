@@ -46,7 +46,8 @@ jobs:
         run: |
           source venv/bin/activate
           # python my.py ${{ secrets.G_T }} ${{ github.repository }} --issue_number '${{ github.event.issue.number }}'
-          python my.py ${{ github.event.inputs.msg }} --title ${{ github.event.inputs.title }} 
+          # python my.py ${{ github.event.inputs.msg }} --title ${{ github.event.inputs.title }} 
+          python charge.py ${{ github.event.inputs.msg }} --title ${{ github.event.inputs.title }} 
       
       - name: Push README
         run: |
