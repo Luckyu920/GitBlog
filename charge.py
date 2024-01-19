@@ -26,7 +26,7 @@ def write_file(file_name,file_content, dir_name=WORK_DIR):
     time_str=bj_dt.strftime('%Y-%m-%d %H:%M:%S')
     with open(md_name, "a+") as f:
         # f.write(f"# 充电记录\n\n")
-        f.write(f"## {time_str}，{file_name}，当前电量：{file_content}\n\n")
+        f.write(f"## {time_str}，{file_name}，当前电量：{file_content}\n")
 
 if __name__ == "__main__":
     if not os.path.exists(WORK_DIR):
