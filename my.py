@@ -285,9 +285,10 @@ def write_file(file_name,file_content, dir_name=WORK_DIR):
     utc_dt = datetime.utcnow().replace(tzinfo=timezone.utc)  # 构建了 UTC 的当前时间
     bj_dt = utc_dt.astimezone(timezone(timedelta(hours=8)))  # 将时区转化为东八区的时间
     md_name = os.path.join(
-        dir_name,bj_dt.strftime('%Y%m%d%H%M%S%f') + f"_{file_name}.md"
+        # dir_name,bj_dt.strftime('%Y%m%d%H%M%S%f') + f"_{file_name}.md"
+        dir_name,"first_try.md"
     )
-    with open(md_name, "w") as f:
+    with open(md_name, "a") as f:
         f.write(f"# {file_name}\n\n")
         f.write(f"## {file_content}\n\n")
         # f.write(f"# [{issue.title}]({issue.html_url})\n\n")
